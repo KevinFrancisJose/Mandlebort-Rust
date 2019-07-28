@@ -1,0 +1,11 @@
+[package]
+name = "mandelbort"
+version = "0.1.0"
+authors = ["The Winters King <jose.kevin110@outlook.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+image = "0.22.0"
+num-complex = "0.2"
