@@ -17,19 +17,15 @@ fn value(x : u32, y : u32, iter_num : u32) -> image::Rgb<u8> {
         let c = num_complex::Complex::new(cx, cy);
         let mut z = num_complex::Complex::new(0.0, 0.0);
 
-        let mut i = 0;
-            
-        while i <= iter_num && z.norm() <= 2.0 {
+
+        for _ in 0..iter_num {
             z = z * z + c;
-            i += 1;            
+            if z.norm() > 2.0 {
+               return image::Rgb([255, 0, 0]); 
+            }
         }
 
-        if i < iter_num {
-            image::Rgb([255, 0, 0])
-        }
-        else {
-            image::Rgb([0, 0, 0])
-        }
+        image::Rgb([0, 0, 0])
 
 }
 
@@ -51,6 +47,5 @@ fn main() {
         }
     }
 
-    // Save the image as “fractal.png”, the format is deduced from the path
     imgbuf.save("fractal.png").unwrap();
 }
